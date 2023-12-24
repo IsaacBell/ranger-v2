@@ -2,6 +2,7 @@
   "name": "ranger-v2",
   "packageManager": "yarn@4.0.2",
   "private": true,
+  "module": "node",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -6,6 +6,7 @@
 import type {Config} from 'jest';
 
 const config: Config = {
+  rootDir: "./",
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -41,6 +42,14 @@ const config: Config = {
     "text",
     "lcov",
     "clover"
+  ],
+
+  moduleDirectories: [
+    "node_modules",
+    "components",
+    "commands",
+    "stores",
+    "app"
   ],
 
   // An object that configures minimum threshold enforcement for coverage results
@@ -111,7 +120,7 @@ const config: Config = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  // resetMocks: false,
+  resetMocks: true,
 
   // Reset the module registry before running each individual test
   // resetModules: false,
@@ -161,9 +170,9 @@ const config: Config = {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  testPathIgnorePatterns: [
+    "/node_modules/"
+  ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

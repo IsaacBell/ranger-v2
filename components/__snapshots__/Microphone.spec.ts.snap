@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+[
+  <h1>
+    Listening? 
+    No
+  </h1>,
+  <button
+    onClick={[Function]}
+  >
+    Reset
+  </button>,
+  <button
+    onClick={[Function]}
+  >
+    Listen
+  </button>,
+  <button
+    onClick={[Function]}
+  >
+    Stop
+  </button>,
+  <hr />,
+  <p />,
+]
+`;

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import allCommands from '@/commands/';
+import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const Microphone = () => {
@@ -9,9 +10,12 @@ const Microphone = () => {
     resetTranscript,
     browserSupportsSpeechRecognition,
     isMicrophoneAvailable
-  } = useSpeechRecognition({ commands: true });
+  } = useSpeechRecognition({
+    commands: allCommands,
+    clearTranscriptOnListen: false,
+  });
 
-  const [language, useLanguage] = 'en-US'
+  const [language, setLanguage] = useState('en-US');
 
   useEffect(() => {
     if (finalTranscript !== '') {
@@ -19,21 +23,32 @@ const Microphone = () => {
     }
   }, [finalTranscript]);
 
-  const listen = (currLanguage = language) => {
+  const listen = () => {
     SpeechRecognition.startListening({
-      language: currLanguage,
+      language,
       continuous: true,
     });
   };
+
+  const reset = () => resetTranscript();
+
+  const changeLanguageTo = (lang: string) => {
+    setLanguage(lang);
+  }
 
   const stop = () => {
     SpeechRecognition.stopListening();
   };
 
+  if (!browserSupportsSpeechRecognition) {
+    return <></>
+  }
+
   return (
     <>
       <h1>Listening? {listening ? 'Yes' : 'No'}</h1>
-      <button onClick={() => resetTranscript()}>Reset</button>
+
+      <button onClick={() => reset()}>Reset</button>
       <button onClick={() => listen()}>Listen</button>
       <button onClick={() => stop()}>Stop</button>
 

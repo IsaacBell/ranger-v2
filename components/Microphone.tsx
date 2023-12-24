@@ -1,4 +1,4 @@
-import allCommands from '@/commands/';
+import allCommands from '@/commands';
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
@@ -32,7 +32,7 @@ const Microphone = () => {
 
   const reset = () => resetTranscript();
 
-  const changeLanguageTo = (lang: string) => {
+  const changeLanguageTo = (lang) => {
     setLanguage(lang);
   }
 
@@ -48,7 +48,7 @@ const Microphone = () => {
     <>
       <h1>Listening? {listening ? 'Yes' : 'No'}</h1>
 
-      <button onClick={() => reset()}>Reset</button>
+      {/* <button onClick={() => reset()}>Reset</button> */}
       <button onClick={() => listen()}>Listen</button>
       <button onClick={() => stop()}>Stop</button>
 

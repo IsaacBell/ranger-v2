@@ -5,7 +5,10 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - init: yarn
-    command: yarn start
+  - init: |
+      corepack enable
+      corepack prepare yarn@stable --activate
+  - command: yarn
+  - command: yarn start
 
 
